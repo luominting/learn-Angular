@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="MyController">
+		<input ng-model="expr" type="text" placeholder="Enter an expression">
+		<h2>{{parseValue}}</h2>
+	</div>
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+	angular.module('myApp',[])
+		.controller('MyController',['$scope', '$parse', function ($scope, $parse){
+			$scope.person = {
+        name: "Ari Lerner"
+      };
+			$scope.$watch('expr', function (newVal, oldVal, $scope){
+				if (newVal !== oldVal){
+					var parseFun = $parse(newVal);
+					
+					$scope.parseValue = parseFun($scope);
+				}
+			})
+		}])
+
+	</script>
+</body>
+</html>

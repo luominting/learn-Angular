@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="my-app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="MyController">
+		<h1>hello <span ng-bind="now">1</span> {{now}}</h1>
+	</div>
+	<script src="node_modules/angular/angular.js"></script>
+	<script>
+    var app=angular.module('my-app',[]);
+		app.controller('MyController',function($scope,$http){//加载执行
+			$scope.now = "123";
+		})
+	</script>
+	</body>
+	</html>
